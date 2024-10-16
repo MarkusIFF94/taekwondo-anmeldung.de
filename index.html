@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beitrittserklärung - Taekwondo</title>
+</head>
+<body>
+    <h1>Beitrittserklärung - Abteilung Taekwondo</h1>
+    <p>Bitte füllen Sie dieses Formular online aus. Die Daten werden an die E-Mail Adresse <strong>taekwondo@bw-lohne.de</strong> versendet und überprüft.</p>
+
+    <form action="https://formspree.io/f/xwpkkwjw" method="POST">
+    <!-- <form action=""send_mail.php"" method="POST">-->
+
+        <h2>Persönliche Daten</h2>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="vorname">Vorname:</label><br>
+        <input type="text" id="vorname" name="vorname" required><br><br>
+
+        <label for="plz">PLZ:</label><br>
+        <input type="text" id="plz" name="plz" required><br><br>
+
+        <label for="wohnort">Wohnort:</label><br>
+        <input type="text" id="wohnort" name="wohnort" required><br><br>
+
+        <label for="strasse">Straße:</label><br>
+        <input type="text" id="strasse" name="strasse" required><br><br>
+
+        <label for="geburtsort">Geburtsort:</label><br>
+        <input type="text" id="geburtsort" name="geburtsort" required><br><br>
+
+        <label for="geburtsdatum">Geburtsdatum:</label><br>
+        <input type="date" id="geburtsdatum" name="geburtsdatum" required><br><br>
+
+        <label for="nationalitaet">Nationalität:</label><br>
+        <input type="text" id="nationalitaet" name="nationalitaet" required><br><br>
+
+        <label for="mobil">Mobiltelefon:</label><br>
+        <input type="text" id="mobil" name="mobil" required><br><br>
+
+        <label for="email">E-Mail:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="erziehungsberechtigter">Name Erziehungsberechtigter (falls minderjährig):</label><br>
+        <input type="text" id="erziehungsberechtigter" name="erziehungsberechtigter"><br><br>
+
+        <h2>Mitgliedsbeiträge</h2>
+        <p>Mitgliedsbeiträge werden halbjährlich im Lastschriftverfahren eingezogen:</p>
+        <input type="radio" id="kinder" name="mitgliedsbeitrag" value="kinder">
+        <label for="kinder">Kinder und Jugendliche bis 18: 60 €</label><br>
+        <input type="radio" id="erwachsene" name="mitgliedsbeitrag" value="erwachsene">
+        <label for="erwachsene">Erwachsene: 90 €</label><br>
+        <input type="radio" id="familienmitglied" name="mitgliedsbeitrag" value="familienmitglied">
+        <label for="familienmitglied">Ab dem 3. direkten Familienmitglied im Verein: Beitragsfrei</label><br><br>
+
+        <label for="namen_familienmitglieder">Namen der Familienmitglieder (falls zutreffend):</label><br>
+        <input type="text" id="namen_familienmitglieder" name="namen_familienmitglieder"><br><br>
+
+        <h2>Einzugsermächtigung</h2>
+        <label for="kontoinhaber">Kontoinhaber:</label><br>
+        <input type="text" id="kontoinhaber" name="kontoinhaber" required><br><br>
+
+        <label for="kreditinstitut">Kreditinstitut:</label><br>
+        <input type="text" id="kreditinstitut" name="kreditinstitut" required><br><br>
+
+        <label for="iban">IBAN:</label><br>
+        <input type="text" id="iban" name="iban" required><br><br>
+
+        <label for="bic">BIC:</label><br>
+        <input type="text" id="bic" name="bic" required><br><br>
+
+        <!-- Passbild-Upload, akzeptiert nur Bilddateien -->
+		<label for="Passbild">Passlbild (nur .jpg, .jpeg, .png, max. 2MB):</label><br>
+        <input type="file" id="Passbild" name="Passbild" accept="image/jpeg, image/png" required><br><br>
+
+        <input type="submit" value="Absenden">
+    </form>
+</body>
+</html>
+
