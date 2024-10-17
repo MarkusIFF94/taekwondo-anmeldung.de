@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beitrittserklärung - Taekwondo</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "TZqUF7Zd3ljeam8VC", // Hier deinen Public Key von EmailJS einfügen
+            });
+        })();
+    </script>
+</head>
+<body>
+    <h1>Beitrittserklärung - Abteilung Taekwondo</h1>
+    <p>Bitte füllen Sie dieses Formular online aus. Die Daten werden an die E-Mail Adresse <strong>taekwondo@bw-lohne.de</strong> versendet und überprüft.</p>
+
+    <form id="contact-form">
+        <h2>Persönliche Daten</h2>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="vorname">Vorname:</label><br>
+        <input type="text" id="vorname" name="vorname" required><br><br>
+
+        <label for="plz">PLZ:</label><br>
+        <input type="text" id="plz" name="plz" required><br><br>
+
+        <label for="wohnort">Wohnort:</label><br>
+        <input type="text" id="wohnort" name="wohnort" required><br><br>
+
+        <label for="strasse">Straße:</label><br>
+        <input type="text" id="strasse" name="strasse" required><br><br>
+
+        <label for="geburtsort">Geburtsort:</label><br>
+        <input type="text" id="geburtsort" name="geburtsort" required><br><br>
+
+        <label for="geburtsdatum">Geburtsdatum:</label><br>
+        <input type="date" id="geburtsdatum" name="geburtsdatum" required><br><br>
+
+        <label for="nationalitaet">Nationalität:</label><br>
+        <input type="text" id="nationalitaet" name="nationalitaet" required><br><br>
+
+        <label for="mobil">Mobiltelefon:</label><br>
+        <input type="text" id="mobil" name="mobil" required><br><br>
+
+        <label for="email">E-Mail:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="erziehungsberechtigter">Name Erziehungsberechtigter (falls minderjährig):</label><br>
+        <input type="text" id="erziehungsberechtigter" name="erziehungsberechtigter"><br><br>
+
+        <h2>Mitgliedsbeiträge</h2>
+        <p>Mitgliedsbeiträge werden halbjährlich im Lastschriftverfahren eingezogen:</p>
+        <input type="radio" id="kinder" name="mitgliedsbeitrag" value="kinder">
+        <label for="kinder">Kinder und Jugendliche bis 18: 60 €</label><br>
+        <input type="radio" id="erwachsene" name="mitgliedsbeitrag" value="erwachsene">
+        <label for="erwachsene">Erwachsene: 90 €</label><br>
+        <input type="radio" id="familienmitglied" name="mitgliedsbeitrag" value="familienmitglied">
+        <label for="familienmitglied">Ab dem 3. direkten Familienmitglied im Verein: Beitragsfrei</label><br><br>
+
+        <label for="namen_familienmitglieder">Namen der Familienmitglieder (falls zutreffend):</label><br>
+        <input type="text" id="namen_familienmitglieder" name="namen_familienmitglieder"><br><br>
+
+        <h2>Einzugsermächtigung</h2>
+        <label for="kontoinhaber">Kontoinhaber:</label><br>
+        <input type="text" id="kontoinhaber" name="kontoinhaber" required><br><br>
+
+        <label for="kreditinstitut">Kreditinstitut:</label><br>
+        <input type="text" id="kreditinstitut" name="kreditinstitut" required><br><br>
+
+        <label for="iban">IBAN:</label><br>
+        <input type="text" id="iban" name="iban" required><br><br>
+
+        <label for="bic">BIC:</label><br>
+        <input type="text" id="bic" name="bic" required><br><br>
+
+        <!-- Passbild-Upload, akzeptiert nur Bilddateien -->
+        <label for="Passbild">Profilbild hochladen (max. 2MB) (nur .jpg, .jpeg, .png):</label><br>
+        <input type="file" id="Passbild" name="Passbild" accept="image/jpeg, image/png" required><br><br>
+
+        <input type="submit" value="Absenden">
+    </form>
+
+    <script type="text/javascript">
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert das Neuladen der Seite
+
+            const fileInput = document.getElementById('Passbild');
+            const reader = new FileReader();
+
+            // Lies die Datei ein und konvertiere sie in Base64
+            reader.onload = function() {
+                const base64String = reader.result; // Hier ist das Base64-Bild
+
+                // Erstelle die Nachricht mit den anderen Daten und dem Bild
+                const message = `
+                    Name: ${document.getElementById('name').value}
+                    Vorname: ${document.getElementById('vorname').value}
+                    PLZ: ${document.getElementById('plz').value}
+                    Wohnort: ${document.getElementById('wohnort').value}
+                    Straße: ${document.getElementById('strasse').value}
+                    Geburtsort: ${document.getElementById('geburtsort').value}
+                    Geburtsdatum: ${document.getElementById('geburtsdatum').value}
+                    Nationalität: ${document.getElementById('nationalitaet').value}
+                    Mobiltelefon: ${document.getElementById('mobil').value}
+                    E-Mail: ${document.getElementById('email').value}
+                    Erziehungsberechtigter: ${document.getElementById('erziehungsberechtigter').value}
+                    Mitgliedsbeitrag: ${document.querySelector('input[name="mitgliedsbeitrag"]:checked')?.value}
+                    Namen der Familienmitglieder: ${document.getElementById('namen_familienmitglieder').value}
+                    Kontoinhaber: ${document.getElementById('kontoinhaber').value}
+                    Kreditinstitut: ${document.getElementById('kreditinstitut').value}
+                    IBAN: ${document.getElementById('iban').value}
+                    BIC: ${document.getElementById('bic').value}
+                `;
+
+                // Erstelle die Nachricht mit den anderen Daten und dem Bild
+                const passbild = `
+                    Passbild:
+                    <img src="${base64String}" alt="Profilbild" style="max-width: 300px;" /> <!-- Bild wird hier eingefügt -->
+                `;
+
+                // Sende die Nachricht an EmailJS
+                emailjs.send('service_l9dmwtz', 'template_dfr5rkp', { message: message, passbild: passbild })
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('E-Mail erfolgreich gesendet!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Es gab ein Problem beim Senden der Nachricht.');
+                });
+            };
+
+            reader.readAsDataURL(fileInput.files[0]); // Konvertiere die Datei in Base64
+        });
+    </script>
+</body>
+</html>
